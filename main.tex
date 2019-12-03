@@ -1,0 +1,90 @@
+% !TEX program = xelatex
+
+% 论文默认为双面模式，需单面模式请将第一行换为如下所示：
+\documentclass[oneside]{zjucsmaster}
+
+\begin{document}
+\zjutitle{XXXXXXXX}{XXX的论文}
+         {XXXXXXXX}{XXXXXXXX}
+
+\zjuauthor{}{}
+\zjuadvisor{}{}
+\zjumajor{计算机科学与技术}{Computer Science and Technology}
+\zjucollege{计算机科学与技术学院}{Computer Science and Technology}
+\zjudate{2019年12月15日}{December 15, 2019}
+
+{
+    \pagestyle{empty} % remove header horizon line
+    \include{data/cover-cn}
+    \cleardoublepage
+    \include{data/cover-en}
+    \cleardoublepage
+    \include{data/agreement}
+    \cleardoublepage
+}
+
+\newgeometry{top=37mm,bottom=37mm,left=31mm,right=31mm}
+
+{
+    \frontmatter  % remove "chapter 1" in section title, defined in book-like classes
+    \makeatletter % fix catcode of '@', so that header works
+      \let\ps@plain\ps@frontmatter
+    \makeatother
+
+    % todo: style of multi-page abstract is wrong
+    \include{data/abstract-cn}
+    \include{data/abstract-en}
+
+    \pagestyle{frontmatter} % style for multi-page toc
+
+    \tableofcontents
+    \cleardoublepage
+
+    {
+      \let\oldnumberline\numberline
+      \renewcommand{\numberline}{\figurename~\oldnumberline}
+      \listoffigures
+      \cleardoublepage
+    }
+
+    {
+      \let\oldnumberline\numberline
+      \renewcommand{\numberline}{\tablename~\oldnumberline}
+      \listoftables
+      \cleardoublepage
+    }
+}
+
+{
+    \mainmatter % restart counter
+    \makeatletter % first page header and footer
+      \let\ps@plain\ps@mainmatter
+    \makeatother
+    \pagestyle{mainmatter}
+
+    \include{data/introduction}
+    \cleardoublepage
+
+    \include{data/result}
+    \cleardoublepage
+}
+
+{
+    \backmatter
+    \makeatletter
+      \let\ps@plain\ps@backmatter
+    \makeatother
+    \pagestyle{backmatter}
+
+    \bibliography{data/reference}
+    % 将参考文献添加到目录
+    \addcontentsline{toc}{chapter}{\bibname}
+    \cleardoublepage
+
+    \include{data/achievement}
+    \cleardoublepage
+    \include{data/acknowledge}
+    \cleardoublepage
+}
+
+\end{document}
