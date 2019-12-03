@@ -180,6 +180,7 @@
   \renewcommand{\zjudatec}{#1}
   \renewcommand{\zjudatee}{#2}
 }
+
 % 方程编号
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 % 下划线
