@@ -18,13 +18,17 @@
 \RequirePackage{chngcntr}                   % \counterwithin
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}                    % \Vert
+\RequirePackage{amsthm}                     % theorem
+\RequirePackage{amsfonts}                   % \mathbb
+\RequirePackage{gensymb}                    % degree circle
 \RequirePackage{mathtools}
 \RequirePackage{setspace}
 \RequirePackage{calc}                       % \setcounter \setlength
 \RequirePackage{xpatch}                     % xpatchcmd for counter
-\RequirePackage[super]{gbt7714}
-\RequirePackage{caption}
+\RequirePackage[super,square]{natbib}       % superscript citing
+\RequirePackage[labelsep=quad]{caption}
 \RequirePackage[top=2.2cm,bottom=1.8cm,left=2.7cm,right=2cm]{geometry}
+\RequirePackage{todonotes}
 
 % set Chinese font
 \setCJKmainfont{SimSun}
@@ -78,13 +82,13 @@
 % chapter, section format ...
 \titleformat{\chapter}[block]{\heiti\sanhao\bfseries\filcenter}{\thechapter}{1em}{}{}
 \titlespacing{\chapter}{0em}{0pt}{18pt}
-\titlecontents{chapter}[0em]{}{\sihao\thecontentslabel\hspace{1em}}{\sihao}{\sihao\titlerule*[5pt]{.}\contentspage}
+\titlecontents{chapter}[0em]{}{\heiti\xiaosi\thecontentslabel\hspace{1em}}{\xiaosi}{\xiaosi\titlerule*[5pt]{.}\contentspage}
 \titleformat{\section}[hang]{\heiti\sihao\bfseries}{\thesection}{1em}{}{}
 \titlespacing{\section}{0em}{24pt}{6pt}
-\titlecontents{section}[2em]{}{\xiaosi\thecontentslabel\hspace{1em}}{}{\xiaosi\titlerule*[5pt]{.}\contentspage}
+\titlecontents{section}[1em]{}{\xiaosi\thecontentslabel\hspace{1em}}{}{\xiaosi\titlerule*[5pt]{.}\contentspage}
 \titleformat{\subsection}[hang]{\heiti\shisanbang}{\thesubsection}{1em}{}{}
 \titlespacing{\subsection}{0em}{12pt}{6pt}
-\titlecontents{subsection}[4em]{}{\wuhao\thecontentslabel\hspace{1em}}{}{\wuhao\titlerule*[5pt]{.}\contentspage}
+\titlecontents{subsection}[2em]{}{\xiaosi\thecontentslabel\hspace{1em}}{}{\xiaosi\titlerule*[5pt]{.}\contentspage}
 \titleformat{\subsubsection}[hang]{\heiti\xiaosi}{\thesubsubsection}{1em}{}{}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
@@ -118,7 +122,7 @@
   \fancyfoot[C]{\xiaowu \thepage}
 }
 
-% 强制``图目录''页眉为``目录''
+% 强制``图目录''、``表目录''页眉为``目录''
 \AtBeginDocument{
   \addtocontents{lof}{\protect\thispagestyle{tocmatter}}
   \addtocontents{lot}{\protect\thispagestyle{tocmatter}}
@@ -191,3 +195,14 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 % 设置图片路径
 \graphicspath{{img/}}
+% 数学定理
+\newtheoremstyle{zjutheorem}
+   {9pt}{9pt}{\ttfamily}{0pt}{\heiti}{：}{0pt}{}
+\theoremstyle{zjutheorem}
+\newtheorem{zjuhypothsis}{假设~}[]
+\newtheorem{zjudefine}{定义~}[]
+\newtheorem{zjutheorem}{定理~}[]
+\newtheorem{zjuproposition}{命题~}[]
+\newenvironment{zjuproof}{\begin{proof}[\textnormal{\heiti 证明~}]}{\end{proof}}
+
+\bibliographystyle{gbt7714-2005}
