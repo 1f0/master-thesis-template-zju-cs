@@ -1,7 +1,6 @@
 # zju-master-thesis
 
-A simple master thesis with detail comment.
-
+A simple master thesis template with detail comment. Modified from [zju-csse-undergraduate-design-latex-template](https://github.com/zhanghai/zju-csse-undergraduate-design-latex-template)
 
 ## usage
 Just use `makefile`.
